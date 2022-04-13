@@ -10,6 +10,7 @@ let menuItems = [
   'Log Out'
 ];
 
+
 /*
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
@@ -32,3 +33,38 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+const header = document.querySelector(".header")
+
+function menuMaker(menu) {
+  const mainMenu = document.createElement("div") 
+  const ulElement = document.createElement("ul")
+
+  mainMenu.appendChild(ulElement)
+
+  menu.forEach(item => {
+    const liElement = document.createElement("li")
+    liElement.textContent = item
+     ulElement.appendChild(liElement)
+  })
+
+  mainMenu.classList.add("menu")
+ 
+  const button = document.querySelector(".menu-button")
+  button.addEventListener("click", () => {   
+    mainMenu.classList.toggle("menu--open")
+  })
+  return mainMenu
+}
+
+const menuElement = menuMaker(menuItems)
+header.appendChild(menuElement)
+
+
+
+
+
+
+
+
+
